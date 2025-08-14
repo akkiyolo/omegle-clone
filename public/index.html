@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Connect - Academic Video Chat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login/Registration Screen -->
+        <div id="auth-screen" class="screen active">
+            <div class="auth-container">
+                <div class="logo">
+                    <h1>🎓 College Connect</h1>
+                    <p>Connect with fellow students for academic networking</p>
+                </div>
+                
+                <div class="auth-form">
+                    <h2>Join the Network</h2>
+                    <form id="registration-form">
+                        <input type="email" id="email" placeholder="Your .edu email" required>
+                        <input type="text" id="name" placeholder="Your name" required>
+                        
+                        <select id="university" required>
+                            <option value="">Select your university</option>
+                            <option value="harvard">Harvard University</option>
+                            <option value="mit">MIT</option>
+                            <option value="stanford">Stanford University</option>
+                            <option value="berkeley">UC Berkeley</option>
+                            <option value="other">Other</option>
+                        </select>
+                        
+                        <select id="major">
+                            <option value="">Select your major (optional)</option>
+                            <option value="computer-science">Computer Science</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="business">Business</option>
+                            <option value="biology">Biology</option>
+                            <option value="psychology">Psychology</option>
+                            <option value="other">Other</option>
+                        </select>
+                        
+                        <select id="year">
+                            <option value="">Select your year (optional)</option>
+                            <option value="freshman">Freshman</option>
+                            <option value="sophomore">Sophomore</option>
+                            <option value="junior">Junior</option>
+                            <option value="senior">Senior</option>
+                            <option value="graduate">Graduate</option>
+                        </select>
+                        
+                        <button type="submit">Start Connecting</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Matching Screen -->
+        <div id="matching-screen" class="screen">
+            <div class="matching-container">
+                <h2>Finding your study buddy...</h2>
+                <div class="spinner"></div>
+                
+                <div class="filters">
+                    <h3>Connection Preferences</h3>
+                    <label>
+                        <input type="checkbox" id="same-university"> Same university only
+                    </label>
+                    <label>
+                        <input type="checkbox" id="same-major"> Same major only
+                    </label>
+                    <label>
+                        <input type="checkbox" id="same-year"> Same year only
+                    </label>
+                    <p class="filter-note">Leave unchecked to connect with anyone</p>
+                </div>
+                
+                <button id="cancel-matching">Cancel</button>
+            </div>
+        </div>
+
+        <!-- Chat Screen -->
+        <div id="chat-screen" class="screen">
+            <div class="chat-container">
+                <div class="video-section">
+                    <div class="video-container">
+                        <video id="remote-video" autoplay playsinline></video>
+                        <video id="local-video" autoplay playsinline muted></video>
+                    </div>
+                    
+                    <div class="video-controls">
+                        <button id="toggle-video">📹</button>
+                        <button id="toggle-audio">🎤</button>
+                        <button id="share-screen">🖥️</button>
+                        <button id="next-connection">Next</button>
+                        <button id="report-user">⚠️</button>
+                    </div>
+                </div>
+                
+                <div class="chat-sidebar">
+                    <div class="partner-info">
+                        <h3 id="partner-name">Connecting...</h3>
+                        <p id="partner-details"></p>
+                        <div id="connection-timer">00:00</div>
+                    </div>
+                    
+                    <div class="icebreakers">
+                        <h4>Conversation Starters</h4>
+                        <div class="icebreaker-suggestions">
+                            <button class="icebreaker">What's your favorite study spot on campus?</button>
+                            <button class="icebreaker">What's the most interesting class you're taking?</button>
+                            <button class="icebreaker">Any tips for managing coursework?</button>
+                        </div>
+                    </div>
+                    
+                    <div class="text-chat">
+                        <div id="chat-messages"></div>
+                        <div class="chat-input">
+                            <input type="text" id="message-input" placeholder="Type a message...">
+                            <button id="send-message">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
