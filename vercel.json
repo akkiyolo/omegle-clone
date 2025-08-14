@@ -10,22 +10,18 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/socket.io/(.*)",
-      "dest": "/api/server.js"
+      "source": "/socket.io/(.*)",
+      "destination": "/api/server.js"
     },
     {
-      "src": "/api/(.*)",
-      "dest": "/api/server.js"
+      "source": "/api/(.*)",
+      "destination": "/api/server.js"
     },
     {
-      "src": "/(.*\\.(css|js|html|png|jpg|jpeg|gif|svg|ico))",
-      "dest": "/public/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/api/server.js"
+      "source": "/((?!api|socket\\.io|.*\\.(css|js|html|png|jpg|jpeg|gif|svg|ico)).*)",
+      "destination": "/api/server.js"
     }
   ],
   "headers": [
