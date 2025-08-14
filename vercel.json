@@ -28,11 +28,6 @@
       "dest": "/api/server.js"
     }
   ],
-  "functions": {
-    "api/server.js": {
-      "maxDuration": 30
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
