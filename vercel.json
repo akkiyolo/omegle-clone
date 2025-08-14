@@ -20,7 +20,7 @@
       "destination": "/api/server.js"
     },
     {
-      "source": "/((?!api|socket\\.io|.*\\.(css|js|html|png|jpg|jpeg|gif|svg|ico)).*)",
+      "source": "/(.*)",
       "destination": "/api/server.js"
     }
   ],
